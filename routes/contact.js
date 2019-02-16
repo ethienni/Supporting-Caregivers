@@ -1,32 +1,55 @@
-//requirements
-//we'll need express to use the routing & mongoose to do the db
+// i'll neeed mongoose, routing for rendering the information etc
 
+let mongoose = require("mongoose");
 let express = require("express");
 let router = express.Router();
-let mongoose = require("mongoose");
 
-//Create a reference to the db schema
-let contact = require("../models/contact");
-//Structure so i can start working with my new Route
+// i Need the MODEL without the model i can't use find() or insert() etc
+let contactModel = require("../model/contact");
 
-/* Get Contact list Page - Read Operation */
-
+//testing the home directory first
 router.get("/", (req, res, next) => {
-  //Contact list displays everything including the error
-  contact.find((err, contactList) => {
+  contactModel.find((err, contactList) => {
     if (err) {
-      //Well if we get an error what did we get>
-      return console.error(err);
+      console.log("Something went Absolutely wrong \n" + err);
     } else {
       console.log(contactList);
+      res.render("contact/index", {
+        title: "Contact Page",
+        givenValues: contactList
+      });
+    }
+  });
+});
 
-      /*
-        res.render("contacts/index", {
-            title: "contact List",
-            //views ---------- ContactList refers to line 14
-            contactList: contactList
-        });
-        */
+//get Route for the add page (displays the page)
+router.get("/add", (req, res, next) => {
+  res.render("contact/add", {
+    title: "Add new Contact"
+  });
+});
+
+//POST Route for processing the add page
+
+router.post("/add", (req, res, next) => {
+  console.log(req.body);
+
+  //get the body
+
+  let newContact = contactModel({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    age: req.body.age
+  });
+
+  //add info using create
+  contactModel.create(newContact, (err, contactModel) => {
+    if (err) {
+      console.log(err);
+      //goes to the browser as well
+      res.end(err);
+    } else {
+      res.redirect("/contact-list");
     }
   });
 });

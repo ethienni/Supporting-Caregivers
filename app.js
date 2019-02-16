@@ -4,25 +4,15 @@ let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 
-//Database setup
-
+//Connecting to Database
 let mongoose = require("mongoose");
 let DB = require("./config/db");
-
-//Open the connection, but currently not applied
 mongoose.connect(DB.URI);
 
-//Open the connection to link with nodemon
+//we need the given default connection to open it
+let mongo = mongoose.connection;
 
-//active connection
-let mongoDB = mongoose.connection;
-
-//applying the connection
-mongoDB = mongoose.connection;
-mongoDB.on("error", console.error.bind(console, "Connection Error"));
-mongoDB.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+mongo.on("open", () => console.log("Connected to DB"));
 
 //Routers
 let indexRouter = require("./routes/index");
@@ -41,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "node_modules")));
 
-//Using the routs
+//Using the routess
 app.use("/", indexRouter);
 app.use("/contact-list", contactRouter);
 
