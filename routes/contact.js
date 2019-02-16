@@ -42,7 +42,7 @@ router.post("/add", (req, res, next) => {
     age: req.body.age
   });
 
-  //add info using create
+  //Create a new Object
   contactModel.create(newContact, (err, contactModel) => {
     if (err) {
       console.log(err);
@@ -54,4 +54,59 @@ router.post("/add", (req, res, next) => {
   });
 });
 
+//Get request for displaying the edit page :ID says it's a variable from our parameter
+router.get("/edit/:id", (req, res, next) => {
+  //params in the link and id is the variable within the link
+
+  let id = req.params.id;
+
+  //Find our ID
+  contactModel.findById(id, (err, contactObject) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      //Get the ID's information using our contactObject
+      res.render("contact/edit", {
+        title: "Edit Contact",
+        contact: contactObject
+      });
+    }
+  });
+});
+
+router.post("/edit/:id", (req, res, next) => {
+  let id = req.params.id;
+
+  //we are going to need The model
+  let updatedContact = contactModel({
+    _id: id,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    age: req.body.age
+  });
+
+  //now we can use the update - basically
+  contactModel.update({ _id: id }, updatedContact, err => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      //refresh the contact List
+      res.redirect("/contact-list");
+    }
+  });
+});
+//Get Request to perform the delete action
+router.get("/delete/:id", (req, res, next) => {
+  let id = req.params.id;
+  contactModel.remove({ _id: id }, err => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.redirect("/contact-list");
+    }
+  });
+});
 module.exports = router;
