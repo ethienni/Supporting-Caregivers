@@ -11509,11 +11509,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Programming\\Hackathon\\HackingHealth\\SupportingCaregivers\\SupportingCaregivers\\SupportingCaregivers.csproj",
+      "projectUniqueName": "C:\\Programming\\Hackathon\\SupportingCaregivers\\SupportingCaregivers\\SupportingCaregivers.csproj",
       "projectName": "SupportingCaregivers",
-      "projectPath": "C:\\Programming\\Hackathon\\HackingHealth\\SupportingCaregivers\\SupportingCaregivers\\SupportingCaregivers.csproj",
+      "projectPath": "C:\\Programming\\Hackathon\\SupportingCaregivers\\SupportingCaregivers\\SupportingCaregivers.csproj",
       "packagesPath": "C:\\Users\\markw\\.nuget\\packages\\",
-      "outputPath": "C:\\Programming\\Hackathon\\HackingHealth\\SupportingCaregivers\\SupportingCaregivers\\obj\\",
+      "outputPath": "C:\\Programming\\Hackathon\\SupportingCaregivers\\SupportingCaregivers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
