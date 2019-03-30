@@ -1,5 +1,5 @@
 {
-  "name": "comp308-w2019-lesson5b",
+  "name": "supporting-caregivers",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "description": "Mongoose",
   "main": "server.js",
-  "author": "Tom Tsiliopoulos",
+  "author": "Hacking Health",
   "license": "ISC",
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -36,10 +36,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ifavhoney/COMP308-W2019-Lesson5B.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Ifavhoney/COMP308-W2019-Lesson5B/issues"
-  },
-  "homepage": "https://github.com/Ifavhoney/COMP308-W2019-Lesson5B#readme"
+    "url": "https://github.com/ethienni/Supporting-Caregivers/tree/NodeJS"
+  }
 }
