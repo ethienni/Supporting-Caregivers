@@ -33,6 +33,8 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 
 //Using the routess
 app.use("/", indexRouter);
+
+//TO DO ROUTE
 app.use("/contact-list", contactRouter);
 
 // catch 404 and forward to error handler
