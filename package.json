@@ -1,0 +1,22 @@
+{
+  "name": "hacking-health",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ethienni/Supporting-Caregivers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethienni/Supporting-Caregivers/issues"
+  },
+  "homepage": "https://github.com/ethienni/Supporting-Caregivers#readme",
+  "dependencies": {
+    "mongodb": "^3.2.2"
+  }
+}
