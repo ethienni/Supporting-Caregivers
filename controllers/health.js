@@ -1,4 +1,5 @@
 healthModel = require("../model/health");
+var fs = require('fs');
 
 module.exports.displayinfo = (req, res, next) => {
   healthModel.find((err, val) => {
@@ -9,8 +10,29 @@ module.exports.displayinfo = (req, res, next) => {
         title: "Health View",
         givenValues: val
       });
+      console.log(val);
     }
   });
+};
+
+//localhost:3000/health/test to call patient list
+module.exports.displayPatients = (req, res, next) => {
+  healthModel.distinct("patient", {}, function(err, patients){
+    if(err){
+       console.log(err);
+    }
+    else{
+      res.json(patients);
+      //jsonfile.writeFile('');
+        res.render("health/test",{
+          title: "Health View",
+          data: patients
+         
+        }  
+        
+        );
+    }
+  })
 };
 
 module.exports.displayadd = (req, res, next) => {
