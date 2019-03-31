@@ -1,0 +1,56 @@
+<%include ../partials/header.ejs %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <h1><%= title %></h1>
+      <a class="btn btn-primary" href="/contact-list/add" role="button">
+        <i class="fa fa-plus-circle"> Add a Contact </i>
+      </a>
+
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Age</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <% for (let count = 0; count < givenValues.length; count++ ){ %>
+
+        <tbody>
+          <tr>
+            <th scope="row"><%= count + 1%></th>
+            <td><%= givenValues[count].firstName %></td>
+            <td><%= givenValues[count].lastName %></td>
+            <td><%= givenValues[count].age %></td>
+            <td class="text-center">
+              <a
+                href="/contact-list/edit/<%= givenValues[count]._id %>"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+              </a>
+            </td>
+
+            <td class="text-center">
+              <a
+                href="/contact-list/delete/<%= givenValues[count]._id %>"
+                class="btn btn-danger"
+              >
+                <i class="fa fa-trash" aria-hidden="true"></i> delete
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <% } %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%include ../partials/footer.ejs %>
