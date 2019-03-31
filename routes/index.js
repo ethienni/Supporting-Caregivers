@@ -3,6 +3,7 @@ let router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
+  res.redirect("/incoming-list");
   res.render("index", { title: "Home" });
 });
 
