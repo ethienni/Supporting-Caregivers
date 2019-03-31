@@ -1,4 +1,5 @@
 incomingModel = require("../model/incoming");
+analyzeMoe = require("../model/analyze");
 
 //Find - GET
 //Update - PUT
