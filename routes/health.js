@@ -3,8 +3,5 @@ let router = express.Router();
 
 let healthController = require("../controllers/health");
 
-router.get("/", healthController.displayinfo);
-router.get("/add", healthController.displayadd);
-router.post("/add", healthController.processinfo);
+healthController.displayinfo = 
 
-module.exports = router;
