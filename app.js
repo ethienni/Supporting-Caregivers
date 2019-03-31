@@ -16,7 +16,7 @@ mongo.on("open", () => console.log("Connected to DB"));
 
 //Routers
 let indexRouter = require("./routes/index");
-let contactRouter = require("./routes/contact");
+let healthRouter = require("./routes/health");
 
 let app = express();
 
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 app.use("/", indexRouter);
 
 //TO DO ROUTE
-app.use("/contact-list", contactRouter);
+app.use("/health-list", healthRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
