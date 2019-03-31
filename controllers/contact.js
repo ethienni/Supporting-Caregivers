@@ -1,46 +1,39 @@
-// i Need the MODEL without the model i can't use find() or insert() etc
-contactModel = require("../model/contact");
+let express = require("express");
+
+// create a reference to the db schema
+let contactModel = require("../model/contact");
 
 module.exports.displayContactList = (req, res, next) => {
   contactModel.find((err, contactList) => {
     if (err) {
-      console.log("Something went Absolutely wrong \n" + err);
+      return console.error(err);
     } else {
-      console.log(contactList);
-      res.render("contact/index", {
-        title: "Contact Page",
-        givenValues: contactList
+      res.json({
+        contactList: contactList
       });
     }
   });
 };
+
 module.exports.displayAddPage = (req, res, next) => {
-  res.render("contact/add", {
-    title: "Add new Contact"
-  });
+  res.json({ success: true, msg: "Successfully Displayed Add Page" });
 };
+
 module.exports.processAddPage = (req, res, next) => {
-  console.log(req.body);
-
-  //get the body
-
   let newContact = contactModel({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    age: req.body.age
+    name: req.body.name
   });
 
-  //Create a new Object
   contactModel.create(newContact, (err, contactModel) => {
     if (err) {
       console.log(err);
-      //goes to the browser as well
       res.end(err);
     } else {
-      res.redirect("/contact-list");
+      res.json({ success: true, msg: "Successfully Added user" });
     }
   });
 };
+/*
 module.exports.displayEditPage = (req, res, next) => {
   //params in the link and id is the variable within the link
 
@@ -94,3 +87,4 @@ module.exports.performDelete = (req, res, next) => {
     }
   });
 };
+*/

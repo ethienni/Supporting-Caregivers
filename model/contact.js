@@ -3,13 +3,11 @@ let mongoose = require("mongoose");
 
 let mySchema = mongoose.Schema(
   {
-    firstName: String,
-    lastName: String,
-    age: Number
+    name: String
   },
   {
-    collection: "first"
+    collection: "patient"
   }
 );
 //then we export our schema to use in our route
-module.exports = mongoose.model("contact", mySchema);
+module.exports = mongoose.model("name", mySchema);
